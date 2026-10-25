@@ -1,0 +1,260 @@
+<!DOCTYPE html><html><head><title>Plazma Burst 2</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
+	    
+	    @font-face {
+		font-family: EuropeExt;
+		src: url("fonts/EuropeExtNonBold.otf") format("opentype");
+	    }
+	    @font-face {
+		font-family: DejaVuSansMono;
+		src: url("fonts/DejaVuSansMono.ttf") format("truetype");
+	    }
+	    @font-face {
+		font-family: Roboto;
+		src: url("fonts/Roboto.ttf") format("truetype");
+	    }
+	    body
+	    {
+		padding: 0;
+		margin: 0;
+		background-color: #000000;
+		overflow: hidden;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	    }
+	    pb2Container, pb2Button, .pb2Input, pb2ProxyMovieClip
+	    {
+		font-family: DejaVuSansMono;
+		color: #ffffff;
+		font-size: 5px;
+		
+		display: block;
+		position: fixed;
+		
+		box-sizing: border-box;
+		visibility: visible;
+		user-select: none;
+	    }
+	    pb2Container
+	    {
+		background-color: rgba(0,255,0,0.2);
+		visibility: hidden;
+	    }
+	    pb2Button
+	    {
+		font-family: EuropeExt;
+		color: #88D0FF;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		background-color: #0000008a;
+		border: 1px solid rgba( 60, 157, 255, 0.3 );
+		
+		cursor: pointer;
+	    }
+	    pb2Button:hover
+	    {
+		background-color: rgba( 0, 178, 255, 0.3 );
+		border: 1px solid rgba( 60, 157, 255, 1 );
+	    }
+	    pb2Button:active
+	    {
+		background-color: rgba( 0, 178, 255, 0.46 );
+		border: 1px solid rgba( 60, 157, 255, 1 );
+	    }
+	    .pb2Input
+	    {
+		font-family: DejaVuSansMono;
+		color: #ffffff;
+		font-size: 12px;
+		border: none;
+		box-sizing: border-box;
+		padding: 5px;
+		margin: 0;
+		user-select: unset;
+		outline: none;
+		background: transparent;
+		resize: none;
+		word-break: break-all;
+		scrollbar-width: thin;
+	    }
+	    .pb2Input::selection {
+		color: #000000;
+		background-color: #d2ecff;
+	    }
+	    
+	    pb2Menu /* Scene */
+	    {
+		display: block;
+		width: 800px;
+		height: 400px;
+		perspective: 445px;
+		position: fixed;
+		left: 0;
+		top: 0;
+		visibility: visible;
+		mix-blend-mode: plus-lighter;
+	    }
+	    pb2MenuPanel /* Object */
+	    {		
+		position: relative;
+		transform-style: preserve-3d;
+		transform: translate3d(-45px, 182px, -210px) rotateY(55deg) rotateX(-1.6deg);
+		display: block;
+	    }
+	    pb2MenuButton, pb2MenuButtonGhost /* Plane */
+	    {		
+		pointer-events: none;
+		position: absolute;
+		display: flex;
+		justify-content: left;
+		align-items: center;
+		box-sizing: border-box;
+		color: #BBD7FF;
+		
+		width: 200px;
+		height: 20px;
+		padding-left: 17px;
+		font-size: 12px;
+	    }
+	    pb2MenuButtonGhost /* Plane */
+	    {		
+		pointer-events: none;
+		background: transparent;
+	    }
+	    pb2MenuButtonOverTint
+	    {
+		pointer-events: none;
+		position: absolute;
+		background: #66CCFF47;
+		box-sizing: border-box;
+		
+		width: 200px;
+		height: 20px;
+		border: 1px solid #3573B0;
+	    }
+	    pb2MenuButtonOverPlane
+	    {
+		pointer-events: none;
+		position: absolute;
+		transform-origin: left top;
+		background: linear-gradient(180deg, #B4E1FE4d 0%, #B3E1FE3b 5%, #B0E2FE29 25%, transparent 100%);
+		
+		width: 200px;
+		height: 26px;
+	    }
+	    pb2MenuButtonOverPlaneSide
+	    {
+		pointer-events: none;
+		position: absolute;
+		transform-origin: left top;
+		background: linear-gradient(90deg, #B4E1FE4d 0%, #B3E1FE3b 5%, #B0E2FE29 25%, transparent 100%);
+		
+		width: 26px;
+		height: 20px;
+	    }
+	    @keyframes marine_anim {
+		0% {
+		    transform: rotate(0deg);
+		}
+		50% {
+		    transform: rotate(-0.2deg);
+		}
+	    }
+	    @keyframes marine_glow_anim {
+		0% {
+		    opacity: 0.6;
+		}
+		10% {
+		    opacity: 0.8;
+		}
+		20% {
+		    opacity: 0.65;
+		}
+		30% {
+		    opacity: 0.58;
+		}
+		40% {
+		    opacity: 0.91;
+		}
+		50% {
+		    opacity: 0.66;
+		}
+		60% {
+		    opacity: 0.95;
+		}
+		70% {
+		    opacity: 0.57;
+		}
+		80% {
+		    opacity: 0.53;
+		}
+		90% {
+		    opacity: 0.7;
+		}
+		100% {
+		    opacity: 0.6;
+		}
+	    }
+	    @keyframes menu_ship_animation
+	    {
+		0% {
+		    transform: scale(1) translate(0, -500%);
+		}
+		100% {
+		    transform: scale(0) translate(0, -500%);
+		}
+	    }
+	</style></head><body><svg style="position:fixed;right:0;bottom:0;width:1px;height:1px;pointer-events: none;"><filter id="svg_filter" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.5 0.5 0.5 0 0   0.3 0.3 0.3 0 0  0.3 0.3 0.3 0 0  0 0 0 1 0"/></filter></svg><div style="position:fixed;right:0;bottom:0;width:1px;height:1px;font-size:0px;pointer-events: none;"><span style="font-family:EuropeExt;">a</span><span style="font-family:DejaVuSansMono;">b</span><span style="font-family:Roboto;">c</span><span style="font-family:Tahoma;">d</span></div><canvas style="user-select:none;z-index:2;pointer-events:none;" id="game_canvas" width="800" height="400"></canvas><div id="startup_overlay" style="
+background-color: #333333;
+z-index:1000;
+left:0;
+top:0;
+width:100%;
+height:100%;
+position:fixed;
+background-size: cover;
+background-position: center;
+cursor: default !important;
+font-family: monospace;
+font-size: 3vh;
+color: black;
+"><div class="loading_marine" style="
+	width: calc(86.0vh* 1.2);
+	height: calc(74.6vh* 1.2);
+	position: fixed;
+	left: calc( 65vw - 86.0vh * 1.2 / 2);
+	bottom: 0;
+	background-size: contain;
+	transform-origin: bottom right;
+	animation: marine_anim 3s ease-in-out infinite;
+	"><div style="
+	    width:100%;
+	    height:100%;
+	    background-size: contain;
+	    background-image: url(loading_screen/loading_marine_static_glow.png);
+	    mix-blend-mode: overlay;
+	    animation: marine_glow_anim 1s linear infinite;
+	 "></div></div><div style="
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    background: linear-gradient(0deg, #272c30 0%, transparent 100%);
+    padding: 2vh;
+    padding-top: 8vh;
+    mix-blend-mode: hard-light;
+    "><div style="filter:invert(0.9)"><dots3a></dots3a><span id="loading_progress">0</span><dots3b></dots3b><div style="
+		width: 80vw;
+		margin-left: 10vw;
+		margin-top: 1vh;
+		margin-bottom: 1vh;
+		height:0.3vh;
+		text-align: center;
+		background:#00000033;"><div id="loading_line" style="width:0%;background:black;height:0.6vh;transition: 1s width ease;"></div></div><span id="loading_time_left">&nbsp;</span></div></div></div><link rel="stylesheet" href="loading_screen.css"><script src="_strings.js"></script><script>//# sourceURL=_strings.js</script><script src="scripts/libs/socket.io.min.js"></script><script>//# sourceURL=scripts/libs/socket.io.min.js</script><script src="scripts/libs/js.cookie.min.js"></script><script>//# sourceURL=scripts/libs/js.cookie.min.js</script><script src="scripts/libs/simplepeer.min.js"></script><script>//# sourceURL=scripts/libs/simplepeer.min.js</script><script src="scripts/libs/errors.js"></script><script>//# sourceURL=scripts/libs/errors.js</script><script src="scripts/libs/localforage.nopromises.js"></script><script>//# sourceURL=scripts/libs/localforage.nopromises.js</script><script src="scripts/libs/tools.js"></script><script>//# sourceURL=scripts/libs/tools.js</script><script src="scripts/libs/xml.js"></script><script>//# sourceURL=scripts/libs/xml.js</script><script src="scripts/quicksave.js"></script><script>//# sourceURL=scripts/quicksave.js</script><script src="scripts/libs/audio.js"></script><script>//# sourceURL=scripts/libs/audio.js</script><script src="scripts/flash.js"></script><script>//# sourceURL=scripts/flash.js</script><script src="scripts/sounds.js"></script><script>//# sourceURL=scripts/sounds.js</script><script src="scripts/graphics.js"></script><script>//# sourceURL=scripts/graphics.js</script><script src="scripts/guns.js"></script><script>//# sourceURL=scripts/guns.js</script><script src="scripts/spritesheets.js"></script><script>//# sourceURL=scripts/spritesheets.js</script><script src="scripts/screens/HUD.js"></script><script>//# sourceURL=scripts/screens/HUD.js</script><script src="scripts/screens/EscMenu.js"></script><script>//# sourceURL=scripts/screens/EscMenu.js</script><script src="scripts/screens/GameScene.js"></script><script>//# sourceURL=scripts/screens/GameScene.js</script><script src="scripts/screens/Settings.js"></script><script>//# sourceURL=scripts/screens/Settings.js</script><script src="scripts/screens/Loading.js"></script><script>//# sourceURL=scripts/screens/Loading.js</script><script src="scripts/screens/NamePrompt.js"></script><script>//# sourceURL=scripts/screens/NamePrompt.js</script><script src="scripts/screens/Credits.js"></script><script>//# sourceURL=scripts/screens/Credits.js</script><script src="scripts/screens/Confirm.js"></script><script>//# sourceURL=scripts/screens/Confirm.js</script><script src="scripts/screens/Campaign.js"></script><script>//# sourceURL=scripts/screens/Campaign.js</script><script src="scripts/screens/Difficulty.js"></script><script>//# sourceURL=scripts/screens/Difficulty.js</script><script src="scripts/screens/MissionFailed.js"></script><script>//# sourceURL=scripts/screens/MissionFailed.js</script><script src="scripts/screens/CustomMap.js"></script><script>//# sourceURL=scripts/screens/CustomMap.js</script><script src="scripts/screens/Equipment.js"></script><script>//# sourceURL=scripts/screens/Equipment.js</script><script src="scripts/screens/Achievements.js"></script><script>//# sourceURL=scripts/screens/Achievements.js</script><script src="scripts/screens/Menu.js"></script><script>//# sourceURL=scripts/screens/Menu.js</script><script src="scripts/screens/MPLobby.js"></script><script>//# sourceURL=scripts/screens/MPLobby.js</script><script src="scripts/screens/MPCreateMatch.js"></script><script>//# sourceURL=scripts/screens/MPCreateMatch.js</script><script src="scripts/screens/MPLogs.js"></script><script>//# sourceURL=scripts/screens/MPLogs.js</script><script src="scripts/ui.js"></script><script>//# sourceURL=scripts/ui.js</script><script src="scripts/connection.js"></script><script>//# sourceURL=scripts/connection.js</script><script src="scripts/libs/flash.js"></script><script>//# sourceURL=scripts/libs/flash.js</script><script src="scripts/frame1.js"></script><script>//# sourceURL=scripts/frame1.js</script><script src="scripts/actions.js"></script><script>//# sourceURL=scripts/actions.js</script><script src="scripts/frame2.js"></script><script>//# sourceURL=scripts/frame2.js</script><script src="scripts/frame17.js"></script><script>//# sourceURL=scripts/frame17.js</script><script src="scripts/frame18.js"></script><script>//# sourceURL=scripts/frame18.js</script><script src="scripts/main.js"></script><script>//# sourceURL=scripts/main.js</script></body></html>
+<script defer src="https://static.itch.io/htmlgame.js" type="text/javascript"></script>

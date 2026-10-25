@@ -1,0 +1,22 @@
+{
+  "name": "pb2-coop",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Campaign co-op server for the Plazma Burst 2 HTML5 build",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server/server.js 2053 --tunnel",
+    "test": "node tools/e2e.js && node tools/ui-test.js && node tools/party-test.js && node tools/late-join-test.js && node tools/tunnel-test.js && node tools/tunnel-test.js https && node tools/lan-check.js",
+    "test:levels": "node tools/levels-test.js",
+    "test:internet": "node tools/tunnel-test.js public"
+  },
+  "dependencies": {
+    "socket.io": "^4.8.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.48.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
