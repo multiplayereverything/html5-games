@@ -50,3 +50,12 @@ Friends who only join need nothing but a browser and the link.
 - `pb2/pb2-coop/node_modules/`: the server's npm dependencies (socket.io and its
   dependencies), each under its own license, included so the server runs without
   `npm install`.
+
+## Made with
+
+This project was made with the help of these tools:
+
+- [antislop-ui](https://github.com/miqdadbadjuber/anti-slop/tree/main/skills/antislop-ui)
+- [coop-anything](https://github.com/cranebeaker/coop-anything)
+- [REA](https://github.com/morluto/rea)
+- [Universal Modder](https://github.com/rehan-remade/universal-modder)
