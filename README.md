@@ -5,6 +5,8 @@ HTML5 games and their Multiplayer Everything mods, one folder per game. The
 runs them: it starts the mod's server, opens the game in a browser window, and
 shows the link friends join with.
 
+Questions, bugs, or looking for people to play with? Join the [Multiplayer Everything Discord](https://discord.com/invite/P2MSSUf5GX).
+
 This repository is private. The games belong to their developers; keep it that way.
 
 ## Games
