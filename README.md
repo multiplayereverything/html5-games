@@ -7,8 +7,6 @@ shows the link friends join with.
 
 Questions, bugs, or looking for people to play with? Join the [Multiplayer Everything Discord](https://discord.com/invite/P2MSSUf5GX).
 
-This repository is private. The games belong to their developers; keep it that way.
-
 ## Games
 
 | Folder | Game | Mod |
